@@ -1,0 +1,46 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "task1",
+      "description": "task1",
+      "estimate": "100 hours",
+      "stateId": 1
+    },
+    {
+      "id": 2,
+      "name": "task2",
+      "description": "task2",
+      "estimate": "200 hours",
+      "stateId": 2
+    },
+    {
+      "id": 3,
+      "name": "task3",
+      "description": "task3",
+      "estimate": "300 hours",
+      "stateId": 3
+    },
+    {
+      "id": 4,
+      "name": "task4",
+      "description": "task4",
+      "estimate": "400 hours",
+      "stateId": 2
+    }
+  ],
+  "states": [
+    {
+      "id": 1,
+      "description": "Planned"
+    },
+    {
+      "id": 2,
+      "description": "In progress"
+    },
+    {
+      "id": 3,
+      "description": "Completed"
+    }
+  ]
+}
