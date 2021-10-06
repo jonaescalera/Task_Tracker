@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import states from "./constants";
 
 const initailForm = {
   name: "",
   description: "",
-  estimate: "",
-  stateId: 1,
+  estimate: null,
+  stateId: "1",
   id: null,
 };
 
-const Form = ({ data, addTask, updateData, setDataToEdit, dataToEdit }) => {
+const CrudForm = ({ addTask, updateData, setDataToEdit, dataToEdit }) => {
   const [form, setForm] = useState(initailForm);
-  console.log(data);
 
   useEffect(() => {
     if (dataToEdit) {
@@ -22,13 +22,9 @@ const Form = ({ data, addTask, updateData, setDataToEdit, dataToEdit }) => {
   }, [dataToEdit]);
 
   const handleChange = (e) => {
-    const value =
-      e.currentTarget.type === "text"
-        ? e.target.value
-        : parseInt(e.target.value);
     setForm({
       ...form,
-      [e.target.name]: value,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -36,7 +32,7 @@ const Form = ({ data, addTask, updateData, setDataToEdit, dataToEdit }) => {
     e.preventDefault();
 
     if (!form.name || !form.description || !form.estimate || !form.stateId) {
-      alert("Datos incompletos");
+      alert("Complete data");
       return;
     }
 
@@ -72,21 +68,26 @@ const Form = ({ data, addTask, updateData, setDataToEdit, dataToEdit }) => {
           value={form.description}
         />
         <input
-          type="text"
+          type="number"
           name="estimate"
           placeholder="Estimate"
           onChange={handleChange}
           value={form.estimate}
         />
         <select value={form.stateId} name="stateId" onChange={handleChange}>
-          {data.map((option) => (
+          {states.map((option) => (
             <option key={option.id} value={option.id}>
               {option.description}
             </option>
           ))}
         </select>
-        <input type="submit" value="Enviar" />
-        <input type="reset" value="Limpiar" onClick={handleReset} />
+
+        <Button type="submit" variant="primary">
+          Enviar
+        </Button>
+        <Button onClick={handleReset} variant="secondary">
+          Limpiar
+        </Button>
       </form>
     </div>
   );
@@ -94,4 +95,4 @@ const Form = ({ data, addTask, updateData, setDataToEdit, dataToEdit }) => {
 
 Form.propTypes = {};
 
-export default Form;
+export default CrudForm;

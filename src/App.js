@@ -1,12 +1,10 @@
 import "./App.css";
 import TaskTracker from "../src/components/TaskTracker";
 
-const App = () => {
+export default function App({ children }) {
   return (
     <div className="app-container">
       <TaskTracker />
     </div>
   );
-};
-
-export default App;
+}

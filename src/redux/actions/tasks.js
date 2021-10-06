@@ -4,9 +4,9 @@ export const fetchTasks = createAsyncThunk("tasks/fetchTasks", async () => {
   return await fetch("http://localhost:5000/tasks").then((res) => res.json());
 });
 
-export const fetchStates = createAsyncThunk("tasks/fetchStates", async () => {
-  return await fetch("http://localhost:5000/states").then((res) => res.json());
-});
+// export const fetchStates = createAsyncThunk("tasks/fetchStates", async () => {
+//   return await fetch("http://localhost:5000/states").then((res) => res.json());
+// });
 
 export const addTask = createAsyncThunk("task/post", async (task) => {
   const requestOptions = {

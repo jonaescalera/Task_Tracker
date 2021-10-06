@@ -1,11 +1,5 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
-import {
-  fetchTasks,
-  fetchStates,
-  deleteTask,
-  addTask,
-  updateTask,
-} from "../actions/tasks";
+import { fetchTasks, deleteTask, addTask, updateTask } from "../actions/tasks";
 
 const taskAdapter = createEntityAdapter({
   selectId: (task) => task.id,
@@ -24,16 +18,6 @@ const taskSlice = createSlice({
       taskAdapter.setAll(state, payload);
     },
     [fetchTasks.rejected]: (state) => {
-      state.loading = false;
-    },
-    [fetchStates.pending]: (state) => {
-      state.loading = true;
-    },
-    [fetchStates.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.states = payload;
-    },
-    [fetchStates.rejected]: (state) => {
       state.loading = false;
     },
     [deleteTask.fulfilled]: (state, { payload: id }) => {
