@@ -1,12 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchTasks = createAsyncThunk("tasks/fetchTasks", async () => {
-  return await fetch("http://localhost:5000/tasks").then((res) => res.json());
-});
+const API_URL = "http://localhost:5000/tasks";
 
-// export const fetchStates = createAsyncThunk("tasks/fetchStates", async () => {
-//   return await fetch("http://localhost:5000/states").then((res) => res.json());
-// });
+export const fetchTasks = createAsyncThunk("tasks/fetchTasks", async () => {
+  return await fetch(API_URL).then((res) => res.json());
+});
 
 export const addTask = createAsyncThunk("task/post", async (task) => {
   const requestOptions = {
@@ -14,7 +12,7 @@ export const addTask = createAsyncThunk("task/post", async (task) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
   };
-  const response = await fetch("http://localhost:5000/tasks", requestOptions);
+  const response = await fetch(API_URL, requestOptions);
   const data = await response.json();
 
   return data;
@@ -26,17 +24,14 @@ export const updateTask = createAsyncThunk("task/put", async (task) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
   };
-  const response = await fetch(
-    `http://localhost:5000/tasks/${task.id}`,
-    requestOptions
-  );
+  const response = await fetch(`${API_URL}/${task.id}`, requestOptions);
 
   const data = await response.json();
   return data;
 });
 
 export const deleteTask = createAsyncThunk("task/delete", async (id) => {
-  await fetch(`http://localhost:5000/tasks/${id}`, {
+  await fetch(`${API_URL}/${id}`, {
     method: "DELETE",
   });
   return id;

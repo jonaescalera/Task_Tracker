@@ -74,6 +74,4 @@ const TableRow = ({
   );
 };
 
-//NOTE: Mover estilos del label linea 53
-
 export default TableRow;

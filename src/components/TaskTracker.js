@@ -34,10 +34,9 @@ const TaskTracker = () => {
     setShowForm(false);
   }, []);
 
-  const updateData = (data) => {
-    setShowForm(false);
+  const updateData = useCallback((data) => {
     dispatch(updateTask(data));
-  };
+  }, []);
 
   const handleCurrentItemId = useCallback(
     (id) => {

@@ -4,7 +4,6 @@ import Table from "react-bootstrap/Table";
 
 const Status = () => {
   const totalStatusDate = useSummarize();
-  //console.log(x);
   return (
     <div>
       <Table size="sm">
